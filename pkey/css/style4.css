@@ -1,0 +1,1568 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+html,body{
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Raleway',sans-serif;
+    position: relative;
+}
+@import url(../css/icon.css);
+body, dl, dd,
+ul, ol,
+h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, legend, input, textarea, optgroup,
+p, blockquote, figure, hr, menu, dir,
+thead, tbody, tfoot, th, td {
+  margin: 0;
+  padding: 0; }
+ul, ol {
+    list-style-type: none;
+    list-style-image: none;
+}
+a {
+  text-decoration: none; }
+  @charset "UTF-8";
+  @import url(../css/icon.css);
+  body, dl, dd,
+  ul, ol,
+  h1, h2, h3, h4, h5, h6, pre,
+  form, fieldset, legend, input, textarea, optgroup,
+  p, blockquote, figure, hr, menu, dir,
+  thead, tbody, tfoot, th, td {
+    margin: 0;
+    padding: 0; }
+
+  /**
+   * 非大面积文字排版网站通常不需要列表项，如果需要可单独设置
+   */
+  ul, ol {
+    list-style-type: none;
+    list-style-image: none; }
+
+  /* ==========================================================================
+     链接
+     ========================================================================== */
+  /**
+   * 去除链接默认的下划线，提高文字可读性
+   */
+  a {
+    text-decoration: none; }
+
+  /**
+  * 去掉 IE 10+ 点击链接时的灰色背景
+  */
+  a:active {
+    background-color: transparent; }
+
+  /**
+   * 去掉点击时的焦点框，同时保证使用键盘可以显示焦点框
+   */
+  a:active,
+  a:hover {
+    outline: 0 none; }
+
+  /**
+   * 统一 Chrome 和 Safari 的焦点框样式
+   * Chrome 中 thin 关键字放大页面后焦点框不会放大 http://jsbin.com/ehakom/1
+   * Firefox 中 box-shadow 会导致焦点框位置偏移，需用「outline-offset」修正
+   * 关闭
+   */
+  a:focus {
+    outline: none; }
+
+  /* ==========================================================================
+     字体和基础排版
+     ========================================================================== */
+  /**
+   * 1.防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
+   */
+  html {
+    -ms-text-size-adjust: 100%;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 1 */
+    text-size-adjust: 100%;
+    font-size: 62.5%;
+    /* 10/16=62.5% */ }
+
+  body {
+    font-size: 12px;
+    line-height: 1.8; }
+
+  /**
+   * 所有 font-family 小写，存在空格的字体名加单引号
+   * @default-font: 'helvetica neue', tahoma, \5B8B\4F53, sans-serif;
+   * @heading-font: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti,
+      \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, 'wenquanyi micro hei', sans-serif;
+   * @code-font: monaco, menlo, consolas, monospace;
+   */
+  /**
+   * 中文优先使用冬青黑体简体(OS X)、微软雅黑(Windows)和文泉驿微米黑(Linux)
+   * 西文使用 tahoma
+   * 1. 防止元素中「font-family」不能继承
+   * 2. 西文字体和 OS X 字体写在前面
+   * 3. Opera 12.1 之前版本不支持中文字体的英文名称
+   * 4. 微软雅黑「\5FAE\8F6F\96C5\9ED1」,中易宋体「\5B8B\4F53」
+   */
+  .font, body,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: 'helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif; }
+
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+    /* 5 */
+    text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+    /* 5 */ }
+
+  /**
+   * 中文小于 12px 可读性很差
+   * 1. 统一 IE 6-7 中字体大小
+   * 2. 统一 Firefox 4+，Safari 5 和 Chrome 中「section」和「article」内的字体大小
+   */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal; }
+
+  h1 {
+    font-size: 36px; }
+
+  h2 {
+    font-size: 30px; }
+
+  h3 {
+    font-size: 22px; }
+
+  h4 {
+    font-size: 18px; }
+
+  h5 {
+    font-size: 14px; }
+
+  h6 {
+    font-size: 12px; }
+
+  /**
+   * 修正「abbr」元素在 Firefox 外其他浏览器没有下划线的问题
+   * 添加问号光标，明确语义
+   */
+  abbr,
+  acronym {
+    border-bottom: 1px dotted;
+    /* 1 */
+    cursor: help;
+    /* 2 */ }
+
+  /**
+   * Firefox3+，Safari4/5 和 Chrome 中统一设置为粗体
+   */
+  b,
+  strong {
+    font-weight: bold; }
+
+  /**
+   * 修正 Safari5 和 Chrome 中没有样式的问题
+   */
+  dfn {
+    font-style: italic; }
+
+  /**
+   * 修正 Firefox 和其他浏览器之间的差异
+   */
+  hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0; }
+
+  /**
+   * 网页标记，荧光笔
+   * 修正 IE6-11 中没有样式的问题
+   */
+  mark {
+    background-color: #D2E5FF;
+    color: #000; }
+
+  /**
+   * 统一代码的字体设置
+   * 字体要能明确区分数字 0 和字母 o
+   * Mac 优先使用 Monaco，Windows 优先使用 Consolas
+   * XP自带 Courier New
+   * Windows 7开始自带的 Consolas
+   * Mac上自带的Monaco，Osaka-Mono
+   */
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monaco, menlo, consolas, 'courier new', courier, monospace; }
+
+  /**
+   * 增强所有浏览器中 pre 标签中文本的可读性
+   * 1. IE 6-7 不支持 pre-wrap
+   * 2. pre 标签应当包含滚溢出
+   */
+  pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    /* 1 */
+    word-wrap: break-word;
+    overflow: auto; }
+
+  /**
+   * 行内引用
+   * IE 6-7 不支持 quotes 属性
+   * 现代浏览器去除 quotes 内容
+   */
+  q {
+    quotes: none; }
+
+  /**
+   * Safari 4 不支持<q>标签
+   */
+  q:before,
+  q:after {
+    content: '';
+    content: none; }
+
+  /**
+   * 中文网页<small>元素字号小于 12px 不易阅读
+   */
+  small {
+    font-size: 85.7%;
+    /* 12/14=0.8571428571 */ }
+
+  /**
+   * 防止所有浏览器中的<sub>和<sup>影响行高
+   * http://jsbin.com/usoyal/1/edit
+   */
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline; }
+
+  sup {
+    top: -0.5em; }
+
+  sub {
+    bottom: -0.25em; }
+
+  /* ==========================================================================
+     表格
+     ========================================================================== */
+  /**
+   * 合并单元格边框
+   */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+  /**
+   * 修复 IE 中 th 不能继承 text-align 的问题并统一左对齐
+   * http://jsbin.com/evoxif/2/edit
+   */
+  th {
+    text-align: left; }
+
+  /**
+   * 单元格添加边框
+   */
+  table th,
+  table td {
+    border: 1px solid #ddd;
+    padding: 8px 10px; }
+
+  /**
+   * 表头底部边框
+   */
+  table th {
+    font-weight: inherit;
+    border-bottom-width: 2px;
+    border-bottom-color: #ccc; }
+
+  /* ==========================================================================
+     嵌入元素
+     ========================================================================== */
+  /**
+   * 1. 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框
+   * 2. 修正 IE8 图片消失bug
+   * 3. 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形
+        http://jsbin.com/aJoTUca/2
+   * 4. 让图片支持响应式
+   * 5. 去除现代浏览器图片底部的空隙
+   * 6. 修复 IE7 图片缩放失真
+   */
+  img {
+    border: 0 none;
+    /* 1 */
+    width: auto\9;
+    /* 2 */
+    height: auto;
+    /* 3 */
+    max-width:99%;
+    /* 4 */
+    vertical-align: top;
+    /* 5 */
+    -ms-interpolation-mode: bicubic;
+    /* 6 */ }
+
+  /**
+   * 修复 IE9 中的「overflow」的怪异表现
+   */
+  svg:not(:root) {
+    overflow: hidden; }
+
+  /* ==========================================================================
+     表单
+     ========================================================================== */
+  /**
+   * 定义一致的边框、外边距和内边距
+   */
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em; }
+
+  /**
+   * 1. 修正 IE 6-9 中颜色不能继承的问题
+   * 2. 修正 Firefox3 中文字不换行的问题
+   * 3. 修正 IE6-7 中怪异的对齐方式
+   */
+  legend {
+    border: 0 none;
+    /* 1 */
+    white-space: normal;
+    /* 2 */
+    *margin-left: -7px;
+    /* 3 */ }
+
+  /**
+   * 1. 修正所有浏览器中字体不继承的问题
+   * 2. 修正所有浏览器中字号不继承的问题
+   * 3. 修正 Firefox 3+， Safari5 和 Chrome 中外边距不同的问题
+   * 4. 改善在所有浏览器下的垂直对齐方式
+   */
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+    vertical-align: baseline;
+    /* 4 */
+    *vertical-align: middle;
+    /* 4 */ }
+
+  /**
+   * 修正 IE7 随着字数增加边距不断增加的问题
+   */
+  input,
+  button {
+    *overflow: visible; }
+
+  /**
+   * 统一各浏览器「text-transform」不会继承的问题
+   * http://jsbin.com/iqecic/1/edit
+   * http://tjvantoll.com/2012/07/10/default-browser-handling-of-the-css-text-transform-property/
+   */
+  button,
+  select {
+    text-transform: none; }
+
+  /**
+   * 1. 避免 Android 4.0.* 中的 WebKit bug ，该bug会破坏原生的
+     「audio」 和「video」的控制器
+   * 2. 更正 iOS 中无法设置可点击的「input」的问题
+   * 3. 统一其他类型的「input」的光标样式
+   */
+  button,
+  html input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button;
+    /* 2 */
+    cursor: pointer;
+    /* 3 */ }
+
+  /**
+   * 重置按钮禁用时光标样式
+   */
+  button[disabled],
+  input[disabled] {
+    cursor: default; }
+
+  /**
+   * 1. 修正 IE 8/9 box-sizing 被设置为「content-box」的问题
+   * 2. 移除 IE 8/9 中多余的内边距
+   * 3. 移除 IE7 中多余的内边距(IE6 中任然存在)
+   */
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box;
+    /* 1 */
+    padding: 0;
+    /* 2 */
+    *height: 13px;
+    /* 3 */
+    *width: 13px;
+    /* 3 */ }
+
+  /**
+   * 1. 修正 Safari 5 和 Chrome 中「appearance」被设置为「searchfield」的问题
+   * 2. 修正 Safari 5 和 Chrome 中「box-sizing」被设置为 「border-box」的问题
+   */
+  input[type="search"] {
+    -webkit-appearance: textfield;
+    /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    /* 2 */
+    box-sizing: content-box; }
+
+  /**
+   * 1.移除 OS X 中 Safari5 和 Chrome 搜索框内侧的左边距
+   * 2.如果需要隐藏清除按钮需要加上
+     input[type="search"]::-webkit-search-cancel-button
+   */
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+
+  /**
+   * 移除 Firefox 3+ 的内边距
+   */
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+  /**
+   * 修正 Chrome 中 input [type="number"] 在特定高度和 font-size 时,
+   * 下面一个箭头光标变成「cursor: text」
+   * @demo: http://jsfiddle.net/FFXEc/
+   * 动画演示：http://gtms04.alicdn.com/tps/i4/T18kd8FCtaXXc_FhcF-330-350.gif
+   */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    height: auto; }
+
+  /**
+   * 1. 移除 IE6-11 中默认的垂直滚动条
+   * 2. 禁止水平拖动，防止破坏布局
+   */
+  textarea {
+    overflow: auto;
+    /* 1 */
+    resize: vertical;
+    /* 2 */ }
+
+  /**
+   * 修正 Chrome 30- option 中文字无法显示的问题
+   * http://jsbin.com/avujas/1/edit
+   */
+  select:disabled option:checked,
+  option:disabled:checked {
+    color: #D2D2D2; }
+
+  /**
+   * 修正 Safari 3+, Chrome 1+ Placeholder 居中问题
+   */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input {
+      line-height: normal !important; } }
+  /**
+   * 修正 Firefox 19+ Placeholder 设置了opacity 的问题
+   */
+  input::-moz-placeholder, textarea::-moz-placeholder {
+    color: darkGray;
+    opacity: 1; }
+
+  /**
+   * label 元素给予手型，暗示此处可点击
+   */
+  label {
+    cursor: pointer; }
+
+  /**
+   * 统一 select 样式, Firefox 中有 padding:1px 0
+   * http://jsbin.com/avujas/1/edit
+   */
+select[size],
+select[multiple],
+select[size][multiple] {
+    border: 1px solid #AAA;
+    padding: 0;
+}
+.sprite {
+    background-image: url(../imgs/second_img/icon.png);
+}
+.clearfix {
+    *zoom:1;
+}
+.clearfix:before,
+.clearfix:after{
+    display: table;
+    line-height: 0;
+    content: "";
+}
+.clearfix:after {
+    clear: both;
+}
+.font2 {
+    font-family: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', "SimSun", sans-serif;
+}
+
+.browser-waring {
+  position: relative;
+  z-index: 9999;
+  background: #000;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+ }
+  .browser-waring a {
+    color: #F13C35;
+}
+
+.hidden {
+  display: none;
+}
+body {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+
+    /*color: #62a1c9;*/
+    /*background-color: #000;*/
+    padding: 0px;
+    margin: 0px;
+}
+.loading {
+    width: 100%;
+    height: 100%;
+    background-image: url("../imgs/four_img/loading.jpg");
+    position: fixed;
+    z-index: 100;
+    background-repeat: no-repeat;
+}
+
+.loading #loading {
+    position: absolute;
+    top:224px;
+    left:50%;
+    width: 275px;
+    height: 284px;
+    margin-left: -138px;
+    background: url(../imgs/four_img/l.png)no-repeat -1px -1px;
+}
+.loading #ltext {
+    display: block;
+    position: absolute;
+    top:545px;
+    left:50%;
+    width: 275px;
+    height: 30px;
+    margin-left: -138px;
+    text-align: center;
+    line-height: 30px;
+    color:#fff;
+    font-size: 20px;
+}
+.enterVideo {
+    display: none;
+    width:1920px;
+    height: 100%;
+    left:0px;
+    top:0px;
+    position: fixed;
+    top:0;
+    left:50%;
+    margin-left: -960px;
+    z-index: 199;
+    overflow: hidden;
+}
+.enterVideo video {
+    height: 100%;
+}
+.skip {
+    font-size: 16px;
+    font-weight: 700;
+    color:#e0c1a1;
+    position: fixed;
+    right:70px;
+    top:22px;
+}
+
+.header {
+    width: 100%;
+    height:100%;
+    top:0px;
+    left: 0px;
+    float: left;
+    position: relative;
+    background: url("../imgs/four_img/main.jpg") center 0  no-repeat;
+    background-size: auto 100%;
+    display: none;
+}
+
+.center {
+    width: 1000px;
+    height: 100%;
+    position: relative;
+    margin:0 auto;
+}
+.age{
+    width: 40px;
+    height: 49px;
+    position: absolute;
+    top:15px;
+    left:0px;;
+    background: url("../imgs/four_img/age.png");
+}
+.nav {
+    width: 1000px;
+    height: 150px;
+    position: absolute;
+    bottom: 8%;
+    left:0px;
+}
+
+.nav a {
+    display: block;
+    width: 180px;
+    height: 100%;
+    float: left;
+}
+.nav a .icon {
+    display: block;
+    width: 100%;
+    height: 74px;
+}
+.nav a.nav1 .icon{
+    background:url(../imgs/four_img/nav1.png) center center no-repeat;
+}
+.nav a em {
+    font-size: 26px;
+    color:#ffffff;
+    font-style: normal;
+    display: block;
+    text-align: center;
+    width: 100%;
+    line-height: 40px;
+}
+.nav a i {
+    display: block;
+    font-size: 13px;
+    color:#fff;
+    font-style: normal;
+    text-align: center;
+    width: 100%;
+}
+.nav a.nav2 .icon {
+    background:url(../imgs/four_img/nav2.png)center center no-repeat;
+}
+
+.nav a.nav3 {
+    margin-left: 280px;
+}
+.nav a.nav3 .icon {
+    background:url(../imgs/four_img/nav3.png)center center no-repeat;
+}
+.nav a.nav4 .icon {
+    background:url(../imgs/four_img/nav4.png)center center no-repeat;
+}
+.nav a.btn_order{
+    display: block;
+    width: 275px;
+    height: 275px;
+    background: url(../imgs/four_img/btn_order.png)0 0 no-repeat;
+    text-align: center;
+    line-height: 250px;
+    color:#e5d093;
+    font-size: 34px;
+    font-weight: bold;
+    position: absolute;
+    top:-60px;
+    left:372px;
+}
+.nav .all:hover{
+    background: url(../imgs/four_img/nav_hover.png)center center no-repeat;
+}
+.nav1:hover.nav1 >.icon{
+    background: url(../imgs/four_img/nav1_hover.png)center center no-repeat;
+}
+.nav2:hover.nav2 >.icon{
+    background: url(../imgs/four_img/nav2_hover.png)center center no-repeat;
+}
+.nav3:hover.nav3 >.icon{
+    background: url(../imgs/four_img/nav3_hover.png)center center no-repeat;
+}
+.nav4:hover.nav4 >.icon{
+    background: url(../imgs/four_img/nav4_hover.png)center center no-repeat;
+}
+.nav .all:hover em {
+    color:#e5d093;
+}
+.act_r {
+    width: 215px;
+    height: 266px;
+    position: fixed;
+    z-index: 100;
+    right: 50px;
+    top:230px;
+    background-image:url(../imgs/four_img/act_r2-1.png);
+    background-repeat: no-repeat;
+}
+.close_act {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:0px;
+    right:0px;
+}
+
+.h_nav {
+    width: 1000px;
+    height: 100%;
+    position: absolute;
+    bottom: 8%;
+    left:0px;
+    color:white;
+}
+.page{
+    width: 100%;
+    height:100%;
+    display: none;
+    background-image:url(../imgs/four_img/bg.jpg);
+    background-size: cover;
+}
+.hover_anav1>.icon {
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav1_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.hover_anav2>.icon {
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav2_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.hover_anav3 {
+    margin-left: 222px;
+}
+.hover_anav3>.icon {
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav3_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.hover_anav4>.icon {
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav4_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+
+.fem {
+    color:#e5d093;
+    font-size: 24px;
+    font-style: normal;
+    display: block;
+    float: left;
+    text-align: left;
+    width: 114px;
+    line-height: 100px;
+}
+.hbg{
+    width: 4000px;
+    height: 100px;
+    left:50%;
+    margin-left: -2000px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.h_nav a.logo{
+    position: absolute;
+    display: block;
+    width: 312px;
+    height: 207px;
+    background: none;
+    text-align: center;
+    top:0px;
+    left:320px;
+}
+.center2 {
+    width: 1000px;
+    margin:0 auto;
+    height: 100%;
+    position: relative;
+}
+.h_nav {
+    width: 1000px;
+    height: 100%;
+    bottom: 8%;
+    margin:0 auto;
+}
+.h_nav a {
+    display: block;
+    width: 180px;
+    height: 200px;
+    float: left;
+    left:50%;
+    margin-top: 72px;
+}
+.h_nav a:hover em,.ons{
+    color:#e5d093;
+}
+.h_nav>.anav1>.icon {
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav1.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.anav1:hover.anav1>.icon, {
+    background-image:url(../imgs/four_img/h_nav1_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.h_nav>.anav2>.icon{
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav2.png);
+    background-repeat: no-repeat;
+    margin-top: 32px;
+}
+.anav2:hover.anav2>.icon,.ons {
+    background-image:url(../imgs/four_img/h_nav2_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 32px;
+}
+.h_nav>.anav3>.icon{
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav3.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.anav3:hover.anav3>.icon,.ons {
+    background-image:url(../imgs/four_img/h_nav3_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.h_nav>.anav4>.icon{
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav4.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.anav4:hover.anav4>.icon,.ons {
+    background-image:url(../imgs/four_img/h_nav4_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+em{
+    font-size: 24px;
+    color:#fff;
+    font-style: normal;
+    display: block;
+    float: left;
+    text-align: left;
+    width: 114px;
+    line-height: 100px;
+}
+.anav3 {
+    margin-left:222px;
+}
+.center3 {
+    width: 80%;
+    margin:0 auto;
+    height:500px;
+    left:10%;
+    top:200px;
+    position: absolute;
+    text-align: center;
+}
+.title {
+    width: 500px;
+    text-align: center;
+    color:#fff;
+    font-size: 60px;
+    line-height: 70px;
+    margin:0 auto;
+}
+.order .dsc{
+    margin:0 auto;
+    width: 500px;
+    text-align: center;
+    color:#fff;
+    font-size: 26px;
+    line-height: 50px;
+}
+.box1 {
+    width: 500px;
+    height: 218px;
+    margin: 25px auto;
+    background: url(../imgs/four_img/box1.png)center 0 no-repeat;
+}
+.box1 h6 {
+    text-align: center;
+    font-size: 14px;
+    color:#070707;
+    font-weight: bold;
+    line-height: 24px;
+}
+.form {
+    color:#fff;
+    font-size: 14px;
+    position: absolute;
+    margin-left:85px;
+    margin-top:35px;
+    line-height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.form input {
+    border: 1px solid #e7d397;
+    width: 220px;
+    height: 32px;
+    line-height: 20px;
+    text-indent: 10px;
+    padding: 0px;
+    margin-left: 10px;
+    background: none;
+    color: #62a1c9;
+}
+.sform{
+    color:#fff;
+    font-size: 14px;
+    position: absolute;
+    margin-left:85px;
+    line-height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 95px;
+}
+.sform a {
+    margin-right: 10px;
+    color:#fff;
+}
+.on {
+    background-color: #e7d397;
+}
+.sform a span{
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e7d397;
+}
+.btn_submit {
+    position: absolute;
+    display: block;
+    margin-left: 165px;
+    margin-top:133px;
+    width: 177px;
+    height: 44px;
+    color:#000;
+    font-size: 26px;
+    text-align: center;
+    background: url(../imgs/four_img/btn_submit.png)center 0 no-repeat;
+}
+.box2 {
+    margin: 35px auto;
+    width: 500px;
+    height: 159px;
+    background: url(../imgs/four_img/box2.png) center 0 no-repeat;
+    position: relative;
+}
+.weixin {
+    position: absolute;
+    top:68px;
+    left:160px;
+    font-size: 14px;
+    color:#fff;
+    line-height: 22px;
+}
+.bar {
+    position: absolute;top:68px;
+    left:390px;
+    font-size: 14px;
+    color:#fff;
+    line-height:22px;
+}
+.bar a {
+    color:#fff;
+}
+footer {
+    bottom: 0px;
+    left:0px;
+    width: 100%;
+    height: 107px;
+    background-color:black;
+}
+.fcenter {
+    width: 80%;
+    height: 100%;
+    margin:0 auto;
+    clear: both;
+}
+.copyLeft {
+    width: 40%;
+    height: 60px;
+    float: left;
+    margin-top: 25px;
+}
+.copyLeft img {
+    width: 100%;
+    height: 60px;
+}
+.copyRight {
+    width: 60%;
+    height: 50px;
+    float: right;
+    margin-top: 25px;
+}
+.lv{
+    color:white;
+    opacity: 0.2;
+    font-size: 13px;
+}
+.whjy {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+.whjy img {
+    width: 100%;
+    height: 100%;
+}
+.wen {
+    color:white;
+    opacity: 0.2;
+    font-size: 13px;
+}
+.text {
+    color:white;
+    font-size: 13px;
+    line-height: 10px;
+    opacity: 0.7;
+}
+.btn_back {
+    position: fixed;
+    right:10px;
+    bottom: 10px;
+    background-image:url(../imgs/four_img/btn_back.png);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    text-align: center;
+    line-height: 22px;
+    width: 98px;
+    height: 48px;
+    padding: 25px 0;
+    color:#e5d093;
+}
+.allTab{
+    width: 100%;
+    height:910px;
+    left:0px;
+    top:0px;
+    position: relative;;
+    display: none;
+    background-color: black;
+}
+
+.allTab>.hbg {
+    background-color: black;
+    opacity: 0.7;
+}
+.prev,.next{
+    display: block;
+    z-index: 100;
+    overflow: hidden;
+    cursor: pointer;
+    width: 86px;
+    height: 162px;
+    top:375px;
+    position: absolute;
+}
+.prev {
+    background: url(../imgs/four_img/prev.png);
+    left:50px;
+}
+.next {
+    background: url(../imgs/four_img/next.png);
+    right:50px;
+}
+.hprev,.hnext{
+    display: block;
+    z-index: 100;
+    overflow: hidden;
+    cursor: pointer;
+    width: 86px;
+    height: 162px;
+    top:379px;
+    position: fixed;
+}
+.hprev{
+    background: url(../imgs/four_img/prev.png);
+    left:50px;
+}
+.hnext {
+    background: url(../imgs/four_img/next.png);
+    right:50px;
+}
+#focus_Box{
+    position: absolute;
+    top:0px;
+    left:50%;
+    margin-left: -890px;
+    width: 1780px;
+    height: 910px;
+}
+
+#focus_Box li {
+    float: left;
+    width: 1440px;
+    height: 910px;
+    top:0px;
+    position: absolute;
+    cursor: pointer;
+}
+.bigTab{
+    width: 100%;
+    height: 910px;
+    left:0px;
+    top:0px;
+    position: absolute;
+}
+.twoTab{
+    width: 100%;
+    height: 100%;
+    top:0px;
+    left:0px;
+    position: absolute;
+    text-align: center;font-size: 100px;
+    display: none;
+    background: url(../imgs/four_img/engine.jpg)no-repeat center 0;
+}
+.engine {
+    width: 1000px;
+    margin:0 auto;
+    height: 100%;
+    position: relative;
+    margin-top: -200px;
+}
+.game {
+    cursor: pointer;
+}
+.game1 {
+    display: block;
+    width: 300px;
+    height: 201px;
+    position: absolute;
+    top:198px;
+    left:-110px;
+}
+.game1 span {
+    display: block;
+    width: 300px;
+    height: 201px;
+    background: url(../imgs/four_img/k1.png)no-repeat;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+.game img {
+    position: absolute;
+    left:3px;
+    top:3px;
+}
+.game2 {
+    display: block;
+    width: 246px;
+    height: 177px;
+    position: absolute;
+    top:245px;
+    right:10px;
+}
+.game2 span {
+    display: block;
+    width: 300px;
+    height: 201px;
+    background: url(../imgs/four_img/k2.png)no-repeat;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+.game3 {
+    display: block;
+    width: 264px;
+    height: 177px;
+    position: absolute;
+    top:565px;
+    left:10px;
+}
+.game3 span {
+    display: block;
+    width: 300px;
+    height: 201px;
+    background: url(../imgs/four_img/k3.png)no-repeat;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+.game4 {
+    display: block;
+    width: 300px;
+    height: 201px;
+    position: absolute;
+    top:495px;
+    right:-110px;
+}
+.game4 span {
+    display: block;
+    width: 300px;
+    height: 201px;
+    background: url(../imgs/four_img/k4.png)no-repeat;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+.threeTab{
+    width: 100%;
+    height: 910px;
+    top:0px;
+    left:0px;
+    position:absolute;
+    text-align: center;font-size: 100px;
+    display: none;
+    background: url(../imgs/four_img/honor.jpg)center 0 no-repeat;
+}
+.fourTab{
+    width: 100%;
+    height: 100%;
+    left:0px;
+    top:0px;
+    position: relative;
+    text-align: center;font-size: 100px;
+    display: none;
+}
+.as{
+    display: block;
+    float: left;
+    width: 66px;
+    height: 100%;
+    background-image:url(../imgs/four_img/h_nav1_hover.png);
+    background-repeat: no-repeat;
+    margin-top: 25px;
+}
+.close_layer {
+    background: url(../imgs/four_img/close.png)no-repeat;
+    width: 71px;
+    height: 71px;
+    right:-75px;
+    top:0px;
+    display: block;
+    position: absolute;
+}
+
+.bg_one, .bg_two,.bg_three,.bg_four{
+    width: 100%;
+    height: 910px;
+    top:0px;
+    left:0px;
+    z-index: 500;
+    position:absolute;
+    display: none;
+}
+.superbg1,.superbg2,.superbg3,.superbg4 {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.7;
+    position: absolute;
+    left:0px;
+    top:0px;
+    z-index: 500;
+}
+
+.videoBox {
+    width: 800px;
+    height: 450px;
+    left:50%;
+    top:50%;
+    z-index: 500;
+    position: fixed;
+    margin-top: -240px;
+    margin-left: -400px;
+    background-color: #000;
+}
+.overplay-button {
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+    background: url(../imgs/four_img/bigplay.svg) no-repeat -10px -10px;
+	width: 81px;
+	height: 81px;
+    z-index: 600;
+    display: none;
+}
+.reHd {
+    width: 100%;
+    height: 910px;
+    position: absolute;
+    margin-top: -300px;
+    float: left;
+}
+.reHd >ul {
+    width: 100%;
+    height: 910px;
+    position:relative;
+    top:0px;
+    left:0px;
+}
+.reHd >ul> li{
+    width:100%;
+    height: 910px;
+    float: left;
+    top:0px;
+    left:0px;
+    position: absolute;
+    display: none;
+}
+
+.review1{
+    width: 100%;
+    height: 100%;
+    top:0px;
+    left:0px;
+    position: absolute;
+}
+.review2 {
+    width: 100%;
+    height: 100%;
+    top:0px;
+    left:0px;
+    position: absolute;
+    background: red;
+}
+.res1 {
+    width: 100%;
+    height: 504px;
+    top:0px;
+    left:0%;
+    overflow: hidden;
+    position: absolute;
+    background: url(../imgs/four_img/review1.jpg)no-repeat center 0;
+}
+.res2 {
+    width: 100%;
+    height:406px;
+    top:504px;
+    left:0;
+    overflow: hidden;
+    position: absolute;
+    background: url(../imgs/four_img/review1.jpg)no-repeat center bottom;
+}
+.res3 {
+    width:100%;
+    height: 910px;
+    position: absolute;
+    top:0px;
+    left:-100%;
+    background: url(../imgs/four_img/review2.jpg)no-repeat center center;
+}
+.timerCtrl{
+    width:1060px;
+    height: 144px;
+    position: absolute;
+    top:383px;
+    left:50%;
+    overflow: hidden;
+    margin-left: -580px;
+    z-index: 100;
+}
+.number{
+    float: left;
+    display: block;
+    height: 144px;
+    width: 74px;
+    text-align: center;
+    height: 144px;
+    line-height: 144px;
+    color:#e6d194;
+    font-size: 30px;
+    position: relative;
+    background: url(../imgs/four_img/btn_time.png)no-repeat center center;
+    margin-left:20px;
+}
+.btn_time {
+    width: 125px;
+    background: url(../imgs/four_img/btn_time_hover.png)no-repeat center center;
+    font-size: 65px;
+}
+.timerCtrl >a >.text {
+    display: none;
+    color:#fff;
+    width: 397px;
+    height: 136px;
+    line-height: 144px;
+    text-align: center;
+    position: absolute;
+    top:155px;
+    left:-31px;
+    font-size: 26px;
+    font-style:normal;
+    font-weight: bold;
+    background: url(../imgs/four_img/text.png)no-repeat center center;
+}
+.timerCtrl .btn_time .text {
+    display:block;
+}
+.timerCtrl .timeBar{
+    float: left;
+    display: block;
+    width: 60px;
+    height: 144px;
+    background: url(../imgs/four_img/timeBar.png)no-repeat center center;
+    margin-left: 5px;
+}
+.res4 {
+    width: 100%;
+    height: 910px;
+    position: absolute;
+    top:0px;
+    left:100%;
+    position: absolute;
+    background: url(../imgs/four_img/review3.jpg)no-repeat center center;
+}
+
+#center_more {
+    width: 1920px;
+    height: 910px;
+    position: absolute;
+    left:50%;
+    top:0px;
+    margin-left: -960px;
+}
+.res5 {
+    width: 1101px;
+    height: 504px;
+    top:-100%;
+    left: -100%;
+    background: url(../imgs/four_img/revie1.png)no-repeat left 0;
+    position: absolute;
+}
+.res6 {
+    width: 963px;
+    height: 504px;
+    top:-100%;
+    right:-100%;
+    background: url(../imgs/four_img/revie2.png)no-repeat right 0;
+    position: absolute;
+}
+.res7 {
+    width: 955px;
+    height: 404px;
+    top:1021px;
+    left:-100%;
+    background: url(../imgs/four_img/revie3.png)no-repeat left bottom;
+    position: absolute;
+}
+.res8 {
+    width: 1079px;
+    height: 404px;
+    top:1021px;
+    right: -100%;
+    background: url(../imgs/four_img/revie4.png)no-repeat right bottom;
+    position: absolute;
+}
+.res9 {
+    width: 100%;
+    height: 505px;
+    top:0px;
+    left:-100%;
+    background: url(../imgs/four_img/review5.jpg)no-repeat center 0;
+    position: absolute;
+}
+.res10 {
+    width: 100%;
+    height: 405px;
+    top:505px;
+    left:100%;
+    background: url(../imgs/four_img/review5.jpg)no-repeat center bottom;
+    position: absolute;
+}
+.res11 {
+    width: 100%;
+    height:100%;
+    top:0px;
+    left:100%;
+    background: url(../imgs/four_img/review6.jpg)center center;
+    position: absolute;
+}
+.btn_last{
+    position: absolute;
+    left:50%;
+    margin-left:-141px;
+    top:690px;
+    text-align: center;
+    display: block;
+    width: 280px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #fff;
+    color:#fff;
+    font-size: 25px;
+    font-weight: bold;
+}
+.btn_last:hover {
+    color:#e5d093;
+    border: 1px solid #e5d093;
+}
